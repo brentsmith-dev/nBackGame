@@ -1,0 +1,51 @@
+This sketch was my first attempt at an Arduino project.
+It's rough but functional for anyone interested in replicating the project.
+
+TODO: Attach circuit diagram
+
+The game itself is a memory/reflex game based on N-Back style tests : http://en.wikipedia.org/wiki/N-back
+
+---Gameplay---
+
+Init Phase:
+Initially a small light pattern is displayed on the 6 score lights to indicate the game has initialized.
+Player one pressese the button and the center light will flash green indicating the start of the setup phase.
+
+Setup Phase:
+Player one indicates which n-back level the game should be played with by pressing their button that number of times.
+The center light will flash blue once per button press (wait for the light to go out before subsequent presses).
+The n-back level is also shown in binary on the leftmost 3 score lights.
+Once the proper level is selected Player two can press their button ending the setup phase.
+
+Accept Phase:
+Player one and Player two should press their buttons indicating they are ready for the game to start.
+Once both players have accepted the center light will flash green 3 times and then turn off indicating the start of play.
+
+Play Phase:
+The play phase is where the fun(?) happens. The center light will turn one of three colors (Red, Blue, or Green) and remain on for a short period of time before turning off for a brief period then turning on again with a different (or possibly the same) colour. The players must decide if the colour shown is the same colour that was shown x previous where x is the n-back level selected in the setup phase. For example if the n-back level selected was 3 and the colours shown were [Blue] [Green] [Red] [Blue] then the player would consider this last [Blue] a "hit" and try and be the first to push their button. This would be considered a hit because 3 previous to the current colour was the same colour. If the series had instead been [Blue] [Red] [Blue] [Green] then it would be a miss because the current colour [Green] was not the same as the one 3 previous [Blue]. Essentially the players need to remember if the colour they saw "n-back level ago" is the same one that is currently shown, if so it's considered a "hit" otherwise it's a "miss". If a player is the first to press their button for a hit they get a point and the score indicator will move closer to their side. If a player presses their button for a miss then they lose a point and the score indicator will move closer to their opponent.
+
+Scoring:
+Scoring is done in a tug-of-war style. 
+At the start of play none of the score lights are on, this indicates that the score is even.
+If a player is the first to press their button for a hit the score indicator will move closer to thier side.
+If a player presses their button for a miss the score indicator will move closer to their opponents side.
+If a player who has the score light closest to them already lit up gains an additional point they win.
+
+Game Over:
+Once a player has won the center light will flash multiple colours and the winning player's score indicators will light up.
+The game will reset to its init phase after a few seconds.
+
+---Pattern Examples (-X indicates a hit)---
+nback level 2: 
+[Blue] [Red] [Red] [Green] [Blue] [Green-X] [Green] [Green-X] [Red] [Blue] [Red-X] [Blue-X] [Blue]
+
+nback level 3: 
+[Blue] [Red] [Red] [Green] [Blue] [Green] [Green-X] [Green] [Red] [Blue] [Red] [Blue] [Blue-X]
+
+nback level 4: 
+[Blue] [Red] [Red] [Green] [Blue-X] [Green] [Green] [Green-X] [Red] [Blue] [Red] [Blue] [Blue]
+
+
+
+ 
+
