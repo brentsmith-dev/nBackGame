@@ -1,7 +1,11 @@
 This sketch was my first attempt at an Arduino project.
 It's rough but functional for anyone interested in replicating the project.
 
-TODO: Attach circuit diagram
+Also included in the project:
+A fritzing project file - http://fritzing.org
+A breadboard diagram
+A circut diagram
+Note: The pin number may be incorrect for the LED outputs, they should be relativly easy to figure out using the init light sequence.
 
 The game itself is a memory/reflex game based on N-Back style tests : http://en.wikipedia.org/wiki/N-back
 
